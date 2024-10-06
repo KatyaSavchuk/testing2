@@ -137,27 +137,48 @@
         }
     }
 
-    function changeImage() {
-        var currentImage = document.getElementById('main-image');
-        if (currentImage.src === "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB4aQqtgDNYlKhZPFPeZ15g92JF0ayOpnt9A&s") {
-            currentImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGaF6VVs7zCpWosloDYCHoZMIzuaoRbFc2rQ&s";
-        } else {
-            currentImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB4aQqtgDNYlKhZPFPeZ15g92JF0ayOpnt9A&s";
-        }
-    }
+    var images = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB4aQqtgDNYlKhZPFPeZ15g92JF0ayOpnt9A&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGaF6VVs7zCpWosloDYCHoZMIzuaoRbFc2rQ&s",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStEYA1QIxLVmGk22lpb91dC_xT8Q-vF3b-Fg&s"  // Додано коректний URL, бо минула картинка не завантажувалась
+];
 
-    function changeText() {
-        var button = document.getElementById('button');
-        if (button.innerText === "кнопка 1") {
-            button.innerText = "кнопка 2";
-        } else if (button.innerText === "кнопка 2") {
-            button.innerText = "кнопка 3";
-        } else if (button.innerText === "кнопка 3") {
-            button.innerText = "кнопка 4";
-        } else {
-            button.innerText = "кнопка 1";
-        }
+var currentIndex = 0;
+
+function changeImage() {
+    var currentImage = document.getElementById('main-image');
+    
+    // Змінюємо на наступне зображення
+    currentIndex++;
+    
+    // Якщо досягли кінця масиву, повертаємось до першого
+    if (currentIndex >= images.length) {
+        currentIndex = 0;
     }
+    
+    // Встановлюємо нове зображення
+    currentImage.src = images[currentIndex];
+}
+
+
+var buttonTexts = ["кнопка 1", "кнопка 2", "кнопка 3", "кнопка 4"];
+var currentTextIndex = 0;
+
+function changeText() {
+    var button = document.getElementById('button');
+    
+    // Змінюємо на наступний текст
+    currentTextIndex++;
+    
+    // Якщо досягли кінця масиву, повертаємось до початку
+    if (currentTextIndex >= buttonTexts.length) {
+        currentTextIndex = 0;
+    }
+    
+    // Встановлюємо новий текст кнопки
+    button.innerText = buttonTexts[currentTextIndex];
+}
+
 
     function changeTextBlock() {
         var button = document.getElementById('button-block');
